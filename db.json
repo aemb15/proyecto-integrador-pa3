@@ -1,0 +1,170 @@
+{
+  "reservas": [
+    {
+      "id": "3",
+      "habitacionId": 103,
+      "fechaInicio": "2023-10-10",
+      "fechaFin": "2023-10-15",
+      "nombreCliente": "Carlos Rodríguez",
+      "estado": "confirmada"
+    },
+    {
+      "id": "4",
+      "habitacionId": 104,
+      "fechaInicio": "2023-11-05",
+      "fechaFin": "2023-11-10",
+      "nombreCliente": "Ana López",
+      "estado": "pendiente",
+      "precioTotal": 480
+    },
+    {
+      "id": "5",
+      "habitacionId": 102,
+      "fechaInicio": "2023-12-15",
+      "fechaFin": "2023-12-20",
+      "nombreCliente": "David Pérez",
+      "estado": "pendiente",
+      "precioTotal": 1000
+    },
+    {
+      "id": "6",
+      "habitacionId": 103,
+      "fechaInicio": "2024-01-02",
+      "fechaFin": "2024-01-07",
+      "nombreCliente": "Elena Martínez",
+      "estado": "pendiente",
+      "precioTotal": 500
+    },
+    {
+      "id": "7",
+      "habitacionId": 104,
+      "fechaInicio": "2024-02-20",
+      "fechaFin": "2024-02-25",
+      "nombreCliente": "Javier Ruiz",
+      "estado": "pendiente",
+      "precioTotal": 600
+    },
+    {
+      "id": "8",
+      "habitacionId": 105,
+      "fechaInicio": "2024-03-10",
+      "fechaFin": "2024-03-15",
+      "nombreCliente": "Sara González",
+      "estado": "pendiente",
+      "precioTotal": 2500
+    },
+    {
+      "id": "9",
+      "habitacionId": 102,
+      "fechaInicio": "2024-04-18",
+      "fechaFin": "2024-04-23",
+      "nombreCliente": "Luis Torres",
+      "estado": "pendiente",
+      "precioTotal": 800
+    },
+    {
+      "id": "10",
+      "habitacionId": 103,
+      "fechaInicio": "2024-05-05",
+      "fechaFin": "2024-05-10",
+      "nombreCliente": "Marta Sánchez",
+      "estado": "pendiente",
+      "precioTotal": 550
+    },
+    {
+      "id": "11",
+      "habitacionId": 104,
+      "fechaInicio": "2024-06-15",
+      "fechaFin": "2024-06-20",
+      "nombreCliente": "Pedro Mendoza",
+      "estado": "pendiente"
+    },
+    {
+      "id": "12",
+      "habitacionId": "103",
+      "fechaInicio": "2023-09-07",
+      "fechaFin": "2023-09-08",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "confirmada"
+    },
+    {
+      "id": "13",
+      "habitacionId": "103",
+      "fechaInicio": "2023-09-02",
+      "fechaFin": "2023-09-02",
+      "nombreCliente": "Roberto Gomes Bolaños",
+      "estado": "pendiente"
+    },
+    {
+      "id": "14",
+      "habitacionId": "102",
+      "fechaInicio": "2023-09-07",
+      "fechaFin": "2023-09-23",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "confirmada"
+    },
+    {
+      "id": "15",
+      "habitacionId": "102",
+      "fechaInicio": "2023-09-05",
+      "fechaFin": "2023-09-07",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "pendiente"
+    },
+    {
+      "id": "16",
+      "habitacionId": "102",
+      "fechaInicio": "2023-09-08",
+      "fechaFin": "2023-09-13",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "confirmada"
+    },
+    {
+      "id": "17",
+      "habitacionId": "102",
+      "fechaInicio": "2023-09-08",
+      "fechaFin": "2023-09-16",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "pendiente"
+    },
+    {
+      "id": "18",
+      "habitacionId": "102",
+      "fechaInicio": "2023-08-30",
+      "fechaFin": "2023-09-09",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "pendiente"
+    },
+    {
+      "id": "19",
+      "habitacionId": 102,
+      "fechaInicio": "2023-06-07",
+      "fechaFin": "2023-08-10",
+      "nombreCliente": "Cristian Huanco",
+      "estado": "confirmada"
+    }
+  ],
+  "habitaciones": [
+    {
+      "nombre": "habitacion simple",
+      "precioPorNoche": 1900,
+      "capacidad": 1,
+      "descripcion": "no tiene",
+      "id": "6960"
+    },
+    {
+      "id": "efaa",
+      "nombre": "habitacion soble",
+      "precioPorNoche": 26000,
+      "capacidad": 3,
+      "descripcion": "baño termal"
+    },
+    {
+      "nombre": "hab simp",
+      "precioPorNoche": 16000,
+      "capacidad": 2,
+      "descripcion": "",
+      "id": "6c5e"
+    }
+  ]
+}

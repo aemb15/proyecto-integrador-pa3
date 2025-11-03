@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Habitaciones</ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/habitaciones/new"><ion-icon name="add-circle"></ion-icon></ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+<div id="container">
+    <ion-card *ngFor="let habitacion of misHabitaciones">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              <ion-item>
+                <ion-label color="success"> {{habitacion.id}} - {{habitacion.nombre}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>capacidad {{habitacion.capacidad}} persona/s</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Precio por Noche: {{habitacion.precioPorNoche}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Descripcion: {{habitacion.descripcion}}</ion-label>
+              </ion-item>
+              <ion-button color="primary" (click)="modificarHabitacion(habitacion)"
+                size="default">Editar</ion-button>
+              <ion-button color="danger" (click)="eliminarHabitacion(habitacion)"
+                size="default">Eliminar</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card>
+  </div>
+
+
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/habitaciones/new"><ion-icon name="add-circle"></ion-icon></ion-fab-button>
+    </ion-fab>
+
+    <ion-toast [isOpen]="toastOpen()" [message]="toastMsg()" duration="2000" (didDismiss)="toastOpen.set(false)"></ion-toast>
+
+</ion-content>
