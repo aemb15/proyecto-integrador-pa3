@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Reservas</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">reservas</ion-title>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Reservas</ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/reserva-form"><ion-icon name="add-circle"></ion-icon></ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <ion-list class="ion-padding">
+      <ion-item *ngFor="let reserva of reservas(); trackBy: trackById" [routerLink]="['/reserva-form', reserva.id]">
+        <ion-label>
+          <h2>{{ reserva.nombreCliente }}</h2>
+          <p>{{ getNombreHabitacion(reserva.habitacionId) }} </p>
+          <p>{{ reserva.fechaInicio }} - {{ reserva.fechaFin }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ reserva.estado }}</ion-note>
+        <ion-button fill="clear" color="danger" slot="end" (click)="remove(reserva, $event)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+

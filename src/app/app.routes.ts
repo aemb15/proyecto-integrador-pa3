@@ -15,8 +15,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/reserva-form/reserva-form.page').then( m => m.ReservaFormPage)
   },
   {
+    path: 'reserva-form/:id',
+    loadComponent: () => import('./pages/reserva-form/reserva-form.page').then( m => m.ReservaFormPage)
+  },
+  {
     path: 'reservas',
     loadComponent: () => import('./pages/reservas/reservas.page').then( m => m.ReservasPage)
+  },
+  {
+    path: 'reservas/:id',
+    loadComponent: () => import('./pages/reservas/reservas.page').then( m => m.ReservasPage)
+  },
+  {
+    path: 'reservas/new',
+    loadComponent: () => import('./pages/reserva-form/reserva-form.page').then( m => m.ReservaFormPage)
   },
   {
     path: 'habitaciones/new',
@@ -30,7 +42,7 @@ export const routes: Routes = [
     path: 'habitaciones',
     loadComponent: () => import('./pages/habitaciones/habitaciones.page').then( m => m.HabitacionesPage)
   },
-    {
+  {
     path: 'habitaciones-form/:id',
     loadComponent: () => import('./pages/habitaciones-form/habitaciones-form.page').then( m => m.HabitacionesFormPage)
   },

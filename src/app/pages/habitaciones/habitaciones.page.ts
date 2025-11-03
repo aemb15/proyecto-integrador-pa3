@@ -22,7 +22,7 @@ import { addCircle, logoIonic, trash } from 'ionicons/icons';
 })
 
 
-export class HabitacionesPage implements OnInit {
+/*export class HabitacionesPage implements OnInit {
   private svc = inject(HabitacionService);
   misHabitaciones: Habitacion[] = [];
   //misHabitaciones = signal<Habitacion[]>([]);
@@ -36,16 +36,6 @@ export class HabitacionesPage implements OnInit {
 
   load() { this.svc.getAll().subscribe(list => this.misHabitaciones = list); }
 
-  /*load() {
-    this.svc.getAll().subscribe({
-      next: (list) => {
-        this.misHabitaciones = list;
-      },
-      error: (err) => {
-        console.error('Error al cargar habitaciones:', err);
-      }
-    });
-  }*/
 
   reload(ev: CustomEvent) {
     this.load();
@@ -53,6 +43,7 @@ export class HabitacionesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.load();
     this.service.getAll().subscribe((habitaciones:Habitacion[])=>{
       this.misHabitaciones = habitaciones;
     })
@@ -67,18 +58,68 @@ export class HabitacionesPage implements OnInit {
     })
   }
 
-  /*remove(h: Habitacion, ev: Event) {
-    ev.preventDefault(); ev.stopPropagation();
-    if (!h.id) return;
-    this.svc.delete(h.id).subscribe(() => {
-      this.toastMsg.set('Producto eliminado');
-      this.toastOpen.set(true);
-      this.load();
-    });
-  }*/
 
   modificarHabitacion(habitacion: Habitacion) {
     this.ruta.navigate(['/habitaciones-form',habitacion.id]);
   }
 
+}*/
+
+export class HabitacionesPage implements OnInit {
+  private svc = inject(HabitacionService);
+  private ruta = inject(Router);
+
+  misHabitaciones: Habitacion[] = [];
+  toastOpen = signal(false);
+  toastMsg = signal('');
+
+  constructor() {
+    addIcons({ addCircle });
+  }
+
+  ngOnInit() {
+    this.load(); //ahora solo se llama aquí (no en constructor)
+  }
+
+  // Carga todas las habitaciones
+  load() {
+    this.svc.getAll().subscribe({
+      next: list => this.misHabitaciones = list,
+      error: err => console.error('Error al cargar habitaciones:', err)
+    });
+  }
+
+  // Recarga desde el refresher (pull-to-refresh)
+  reload(ev: CustomEvent) {
+    this.svc.getAll().subscribe({
+      next: list => {
+        this.misHabitaciones = list;
+        (ev.target as HTMLIonRefresherElement).complete();
+      },
+      error: err => {
+        console.error('Error al recargar habitaciones:', err);
+        (ev.target as HTMLIonRefresherElement).complete();
+      }
+    });
+  }
+
+  // Eliminar habitación y recargar lista
+  eliminarHabitacion(habitacion: Habitacion) {
+    if (!habitacion.id) return;
+
+    this.svc.delete(habitacion.id).subscribe({
+      next: () => {
+        this.toastMsg.set(`Habitación "${habitacion.nombre}" eliminada`);
+        this.toastOpen.set(true);
+        this.load(); // recarga la lista desde el servidor
+      },
+      error: err => console.error('Error al eliminar habitación:', err)
+    });
+  }
+
+  // Navegar al formulario de edición
+  modificarHabitacion(habitacion: Habitacion) {
+    this.ruta.navigate(['/habitaciones-form', habitacion.id]);
+  }
 }
+

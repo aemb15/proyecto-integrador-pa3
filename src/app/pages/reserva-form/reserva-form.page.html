@@ -1,13 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>reserva-form</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ reservaId ? 'Editar' : 'Registrar' }} Reserva</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">reserva-form</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="form" (ngSubmit)="save()" class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre del Cliente</ion-label>
+        <ion-input formControlName="nombreCliente" placeholder="Ingrese el nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Inicio</ion-label>
+        <ion-input type="date" formControlName="fechaInicio"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Fin</ion-label>
+        <ion-input type="date" formControlName="fechaFin"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Estado</ion-label>
+        <ion-select formControlName="estado" placeholder="Seleccione el estado">
+          <ion-select-option value="confirmada">Confirmada</ion-select-option>
+          <ion-select-option value="pendiente">Pendiente</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label position="stacked">Habitación</ion-label>
+      <ion-select formControlName="habitacionId" placeholder="Seleccione habitación">
+        <ion-select-option *ngFor="let h of habitaciones()" [value]="h.id">
+          {{ h.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="ion-padding-top">
+      <ion-button type="submit" expand="block" [disabled]="form.invalid">
+        {{ reservaId ? 'Actualizar' : 'Registrar' }}
+      </ion-button>
+      <ion-button fill="clear" color="medium" expand="block" (click)="cancel()">
+        Cancelar
+      </ion-button>
+    </div>
+  </form>
 </ion-content>

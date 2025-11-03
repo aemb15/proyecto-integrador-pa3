@@ -1,8 +1,8 @@
 export interface Reserva{
     id?: string;
     habitacionId: string;
-    fechaInicio: Date;
-    fechaFin: Date;
+    fechaInicio: string;
+    fechaFin: string;
     nombreCliente: string;
     estado: string;
 }
