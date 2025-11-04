@@ -9,9 +9,6 @@ import { HabitacionService } from 'src/app/services/habitacion';
 import { addIcons } from 'ionicons';
 import { addCircle, logoIonic, trash } from 'ionicons/icons';
 
-
-
-
 @Component({
   selector: 'app-habitaciones',
   templateUrl: './habitaciones.page.html',
@@ -20,50 +17,6 @@ import { addCircle, logoIonic, trash } from 'ionicons/icons';
   imports: [IonToast, IonFabButton, IonFab, IonCol, IonRow, IonGrid, IonCard, IonItem, IonLabel, IonIcon, IonButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
     RouterLink, IonRefresher, IonRefresherContent]
 })
-
-
-/*export class HabitacionesPage implements OnInit {
-  private svc = inject(HabitacionService);
-  misHabitaciones: Habitacion[] = [];
-  //misHabitaciones = signal<Habitacion[]>([]);
-  toastOpen = signal(false);
-  toastMsg = signal('');
-
-  constructor(private service: HabitacionService,private ruta:Router) {
-      addIcons({ addCircle});
-      this.load();
-  }
-
-  load() { this.svc.getAll().subscribe(list => this.misHabitaciones = list); }
-
-
-  reload(ev: CustomEvent) {
-    this.load();
-    setTimeout(() => (ev.target as any).complete(), 600);
-  }
-
-  ngOnInit() {
-    this.load();
-    this.service.getAll().subscribe((habitaciones:Habitacion[])=>{
-      this.misHabitaciones = habitaciones;
-    })
-  }
-
-
-  eliminarHabitacion(habitacion: Habitacion) {
-    this.service.delete(habitacion.id!).subscribe({
-      next: () => {
-        this.misHabitaciones = this.misHabitaciones.filter(h => h.id !== habitacion.id);
-      }
-    })
-  }
-
-
-  modificarHabitacion(habitacion: Habitacion) {
-    this.ruta.navigate(['/habitaciones-form',habitacion.id]);
-  }
-
-}*/
 
 export class HabitacionesPage implements OnInit {
   private svc = inject(HabitacionService);
@@ -78,10 +31,9 @@ export class HabitacionesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.load(); //ahora solo se llama aquí (no en constructor)
+    this.load(); 
   }
-
-  // Carga todas las habitaciones
+  
   load() {
     this.svc.getAll().subscribe({
       next: list => this.misHabitaciones = list,
@@ -89,7 +41,7 @@ export class HabitacionesPage implements OnInit {
     });
   }
 
-  // Recarga desde el refresher (pull-to-refresh)
+  
   reload(ev: CustomEvent) {
     this.svc.getAll().subscribe({
       next: list => {
@@ -103,7 +55,7 @@ export class HabitacionesPage implements OnInit {
     });
   }
 
-  // Eliminar habitación y recargar lista
+  
   eliminarHabitacion(habitacion: Habitacion) {
     if (!habitacion.id) return;
 
@@ -111,13 +63,13 @@ export class HabitacionesPage implements OnInit {
       next: () => {
         this.toastMsg.set(`Habitación "${habitacion.nombre}" eliminada`);
         this.toastOpen.set(true);
-        this.load(); // recarga la lista desde el servidor
+        this.load(); 
       },
       error: err => console.error('Error al eliminar habitación:', err)
     });
   }
 
-  // Navegar al formulario de edición
+  
   modificarHabitacion(habitacion: Habitacion) {
     this.ruta.navigate(['/habitaciones-form', habitacion.id]);
   }
